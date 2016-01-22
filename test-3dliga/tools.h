@@ -1,33 +1,17 @@
 #pragma once
 
+#include <codecvt>
+#include <fstream>
 #include <iostream>
 #include <string>
+#include <vector>
 
 void ShowUsage();
 
 std::wstring string_to_wstring(const std::string & source);
 
-template <typename WordT = std::string>
-size_t WordDistance(const WordT & Word1, const WordT & Word2)
-{
-    if (Word1 == Word2)
-    {
-        return 0;
-    }
+size_t WordDistance(const std::wstring & Word1, const std::wstring & Word2);
 
-    if (Word1.size() != Word2.size())
-    {
-        return std::numeric_limits<size_t>::max();
-    }
+void DumpWStringVectorToConsole(const std::vector<std::wstring> & vec);
 
-    size_t result{ 0 };
-    for (size_t i = 0; i < Word1.size(); ++i)
-    {
-        if (Word1[i] != Word2[i])
-        {
-            ++result;
-        }
-    }
-
-    return result;
-}
+std::vector<std::wstring> LoadLinesFromFile(const char * const Filename, size_t LinesLimit = std::numeric_limits<size_t>::max());
