@@ -17,8 +17,10 @@ class MuhaSlon
 {
 public:
     explicit MuhaSlon(const char * const DictionaryFilename);
+    explicit MuhaSlon(const std::vector<std::wstring> & Dictionary);
 
     void LoadDictionary(const char * const DictionaryFilename);
+    void SetDictionary(const std::vector<std::wstring> & Dictionary);
 
     std::vector<std::wstring> GetPath(const std::wstring & WordFrom, const std::wstring & WordTo) const;
 

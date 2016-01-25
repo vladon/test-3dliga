@@ -5,12 +5,22 @@ MuhaSlon::MuhaSlon(const char * const DictionaryFilename)
     LoadDictionary(DictionaryFilename);
 }
 
+MuhaSlon::MuhaSlon(const std::vector<std::wstring> & Dictionary)
+{
+    SetDictionary(Dictionary);
+}
+
 void MuhaSlon::LoadDictionary(const char * const DictionaryFilename)
 {
     Dictionary_ = LoadLinesFromFile(DictionaryFilename);
 
     std::sort(Dictionary_.begin(), Dictionary_.end());
     std::unique(Dictionary_.begin(), Dictionary_.end());
+}
+
+void MuhaSlon::SetDictionary(const std::vector<std::wstring> & Dictionary)
+{
+    Dictionary_ = Dictionary;
 }
 
 std::vector<std::wstring> MuhaSlon::GetPath(const std::wstring & WordFrom, const std::wstring & WordTo) const
